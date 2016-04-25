@@ -2,9 +2,89 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
     <title>Message Counts</title>
+    <style>
+        body {
+            background-color: #dddddd;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 15px;
+        }
+
+        td {
+            padding: 3px;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #ffffff;
+            width: 60%;
+            margin: auto;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .count {
+            vertical-align: top;
+        }
+
+        .table {
+            margin: auto;
+        }
+
+        .code {
+            border-radius: 5px;
+            background-color: #fff0f0;
+            color: #bb0000;
+            font-family: "Courier New", monospace;
+            padding: 3px;
+        }
+
+        .slack_link {
+            color: #0000bb;
+        }
+
+        a:link, a:visited {
+            text-decoration: none;
+        }
+
+        a:hover, a:active {
+            text-decoration: underline;
+        }
+
+        #title {
+            border-top: dashed #dddddd;
+            border-bottom: dashed #dddddd;
+            padding: 20px;
+        }
+
+        .left {
+            text-align: left;
+            padding: 1px 5px 1px;
+        }
+    </style>
 </head>
 <body>
-
+<div class="container">
+    <h1 id="title">
+        Mafia Message Counts
+    </h1>
+    <table class="table">
+        <tr>
+            <td class="left">Name</td>
+            <td class="left"><a class="slack_link" href="https://mafiagame4.slack.com/messages/city_hall/">#city_hall</a></td>
+            <td class="left"><a class="slack_link" href="https://mafiagame4.slack.com/messages/watercooler/">#watercooler</a></td>
+            <td>Total</td>
+        </tr>
+        {% for count in counts %}
+            <tr>
+                <td class="left">{{ count.0 }}</td>
+                <td class="left">{{ count.1.city_hall }}</td>
+                <td class="left">{{ count.1.watercooler }}</td>
+                <td class="left">{{ count.2 }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
 </body>
 </html>

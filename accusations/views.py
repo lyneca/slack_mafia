@@ -44,7 +44,7 @@ def get_accusation_list():
                     datetime.fromtimestamp(float(message['ts'])).isoformat().split('T')[1].split('.')[0]
                 ]
                 accusations.append(m)
-                print(users[m[0]].real_name, m[1] + 'd', users[m[2]].real_name, 'at', m[3])
+                # print(users[m[0]].real_name, m[1] + 'd', users[m[2]].real_name, 'at', m[3])
     return [
         [
             users[a[0]].real_name,
