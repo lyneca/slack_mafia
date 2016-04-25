@@ -20,6 +20,11 @@
 
         .accuser {
             text-align: right;
+            vertical-align: top;
+        }
+
+        .count {
+            vertical-align: top;
         }
 
         .type_accuse {
@@ -32,6 +37,11 @@
 
         .accused {
             text-align: left;
+            vertical-align: top;
+        }
+
+        .table {
+            margin: auto;
         }
 
         #title {
@@ -47,7 +57,7 @@
         Mafia Accusations
     </h1>
     <h3>Today's totals</h3>
-    <table width="80%" align="center">
+    <table width="80%" class="table">
         <tr>
             <td class="accuser">Name</td>
             <td>Accusations</td>
@@ -56,9 +66,9 @@
         {% for total in accusation_totals %}
             <tr>
                 <td class="accuser">{{ total.0 }}</td>
-                <td>{{ total.1 }}</td>
+                <td class="count">{{ total.1 }}</td>
                 <td class="accused">
-                    {{ total.2 }}
+                    {{ total.2|linebreaksbr }}
                 </td>
             </tr>
         {% endfor %}
