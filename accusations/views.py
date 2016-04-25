@@ -43,7 +43,8 @@ def get_accusation_list():
                     message['text'].split()[1][2:-1],
                     datetime.fromtimestamp(float(message['ts'])).isoformat().split('T')[1].split('.')[0]
                 ]
-                accusations.append(m)
+                if int(m[3].split(':')[0]) < 20 or (int(m[3].split(':')[0]) == 20 and int(m[3].split(':')[1]) <= 30):
+                    accusations.append(m)
                 # print(users[m[0]].real_name, m[1] + 'd', users[m[2]].real_name, 'at', m[3])
     return [
         [
