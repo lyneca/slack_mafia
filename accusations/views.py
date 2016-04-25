@@ -35,13 +35,13 @@ def get_accusation_list():
     )['messages']['matches']
     for message in messages:
         print(message['text'])
-        if re.match(r'a(ccuse|bsolve): <@\w+>', message['text'].lower()) and len(message['text'].split()) == 2:
+        if re.match(r'a(ccuse|bsolve): <@\w+>', message['text'].lower()) and len(message['text'].split()) >= 2:
             if (message['is_bot'] if 'is_bot' in message else 'false') == 'false':
                 accusations.append(
                     [
                         message['user'],
-                        message['text'].split(':')[0].lower(),
-                        message['text'].split('@')[1][:-1],
+                        message['text'].split(': ')[0].lower(),
+                        message['text'].split()[1][2:-1],
                         datetime.fromtimestamp(float(message['ts'])).isoformat().split('T')[1].split('.')[0]
                     ]
                 )
