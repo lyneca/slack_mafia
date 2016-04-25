@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    <title>Mafia Accusations</title>
+    <style>
+        body {
+            background-color: #dddddd;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .container {
+            text-align: center;
+            background-color: #ffffff;
+            width: 60%;
+            margin: auto;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .accuser {
+            text-align: right;
+        }
+
+        .type_accuse {
+            color: #990000
+        }
+
+        .type_absolve {
+            color: #009900
+        }
+
+        .accused {
+            text-align: left;
+        }
+
+        #title {
+            border-top: dashed #dddddd;
+            border-bottom: dashed #dddddd;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 id="title">
+        Mafia Accusations
+    </h1>
+    <h3>Today's totals</h3>
+    <table width="80%" align="center">
+        <tr>
+            <td class="accuser">Name</td>
+            <td>Accusations</td>
+            <td class="accused">Accused by</td>
+        </tr>
+        {% for total in accusation_totals %}
+            <tr>
+                <td class="accuser">{{ total.0 }}</td>
+                <td>{{ total.1 }}</td>
+                <td class="accused">
+                    {{ total.2 }}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <h3>Today's activity</h3>
+    <table width="80%" align="center">
+        {% for accusation in accusation_list %}
+            <tr>
+                <td width="25%" class="accuser">{{ accusation.0 }}</td>
+                <td width="25%" class="type_{{ accusation.1 }}">{{ accusation.1 }}d</td>
+                <td width="25%" class="accused">{{ accusation.2 }}</td>
+                <td width="25%">at {{ accusation.3 }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>
