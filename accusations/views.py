@@ -38,11 +38,11 @@ def get_accusation_list():
         if re.match(r'a(ccuse|bsolve): <@\w+>', message['text'].lower()) and len(message['text'].split()) >= 2:
             if (message['is_bot'] if 'is_bot' in message else 'false') == 'false':
                 m = [
-                        message['user'],
-                        message['text'].split(': ')[0].lower(),
-                        message['text'].split()[1][2:-1],
-                        datetime.fromtimestamp(float(message['ts'])).isoformat().split('T')[1].split('.')[0]
-                    ]
+                    message['user'],
+                    message['text'].split(': ')[0].lower(),
+                    message['text'].split()[1][2:-1],
+                    datetime.fromtimestamp(float(message['ts'])).isoformat().split('T')[1].split('.')[0]
+                ]
                 accusations.append(m)
                 print(users[m[0]].real_name, m[1] + 'd', users[m[2]].real_name, 'at', m[3])
     return [
@@ -76,7 +76,11 @@ def get_accusation_totals():
         if not len(accusation_totals[a]) == 0:
             t[a] = accusation_totals[a]
     accusation_totals = t
-    return [[a, len(accusation_totals[a]), '\n'.join(accusation_totals[a])] for a in accusation_totals]
+    return sorted(
+        [[a, len(accusation_totals[a]), '\n'.join(accusation_totals[a])] for a in accusation_totals],
+        key=lambda x: x[1],
+        reverse=True
+    )
 
 
 def index(request):
@@ -85,4 +89,3 @@ def index(request):
         'accusation_totals': get_accusation_totals()
     }
     return render(request, 'accusations/accusations.html', context=context)
-
