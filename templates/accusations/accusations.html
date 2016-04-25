@@ -8,8 +8,8 @@
         body {
             background-color: #dddddd;
             font-family: 'Open Sans', sans-serif;
+            font-size: 15px;
         }
-
 
         td {
             padding: 3px;
@@ -23,7 +23,11 @@
             border-radius: 10px;
             padding: 10px;
         }
-
+        .foot {
+            text-align: center;
+            margin: auto;
+            padding: 10px;
+        }
         .accuser {
             text-align: left;
             vertical-align: top;
@@ -60,6 +64,26 @@
             margin: auto;
         }
 
+        .code {
+            border-radius: 5px;
+            background-color: #fff0f0;
+            color: #bb0000;
+            font-family: "Courier New", monospace;
+            padding: 3px;
+        }
+
+        .slack_link {
+            color: #0000bb;
+        }
+
+        a:link, a:visited {
+            text-decoration: none;
+        }
+
+        a:hover, a:active {
+            text-decoration: underline;
+        }
+
         #title {
             border-top: dashed #dddddd;
             border-bottom: dashed #dddddd;
@@ -94,7 +118,7 @@
             <td class="type_absolve">No{% endif %}</td>
         </tr>
         {% endfor %}
-    </table>
+    </table><br />
     <h3>Today's activity</h3>
     <table width="50%" align="center">
         {% for accusation in accusation_list %}
@@ -106,6 +130,11 @@
             </tr>
         {% endfor %}
     </table>
+</div>
+<div class="foot">
+    Accuse people by typing
+    <span class="code">accuse @name</span> in
+    <a class="slack_link" href="https://mafiagame4.slack.com/messages/accusations">#accusations</a>
 </div>
 </body>
 </html>
