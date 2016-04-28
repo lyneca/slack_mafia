@@ -4,7 +4,7 @@ from datetime import datetime
 import requests
 from django.shortcuts import render
 
-api_key = 'xoxp-34556136643-34610936081-34598874262-0406726de8'
+api_key = 'xoxp-34556136643-34610936081-38545595093-8094ca76bf'
 
 
 class User:
@@ -43,9 +43,9 @@ def get_accusation_list():
                     message['text'].split()[1][2:-1],
                     datetime.fromtimestamp(float(message['ts'])).isoformat().split('T')[1].split('.')[0]
                 ]
-                if int(m[3].split(':')[0]) < 20 or (int(m[3].split(':')[0]) == 20 and int(m[3].split(':')[1]) <= 30):
+                if int(m[3].split(':')[0]) <= 20:
                     accusations.append(m)
-                # print(users[m[0]].real_name, m[1] + 'd', users[m[2]].real_name, 'at', m[3])
+                    # print(users[m[0]].real_name, m[1] + 'd', users[m[2]].real_name, 'at', m[3])
     return [
         [
             users[a[0]].real_name,
@@ -84,9 +84,17 @@ def get_accusation_totals():
     )
 
 
+def is_voting_hours():
+    now = datetime.now().isoformat().split('T')[1].split('.')[0]
+    if int(now.split(':')[0]) <= 20:
+        return True
+    return False
+
+
 def index(request):
     context = {
         'accusation_list': reversed(get_accusation_list()),
-        'accusation_totals': get_accusation_totals()
+        'accusation_totals': get_accusation_totals(),
+        'is_voting_hours': is_voting_hours()
     }
     return render(request, 'accusations/accusations.html', context=context)

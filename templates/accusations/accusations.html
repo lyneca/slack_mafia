@@ -96,6 +96,9 @@
     <h1 id="title">
         Mafia Accusations
     </h1>
+{% if not is_voting_hours %}
+    It's not in voting hours!
+{% endif %}
     <h3>Today's totals</h3>
     <table width="50%" class="table">
         <tr>
@@ -134,7 +137,7 @@
 <div class="foot">
     Accuse people by typing
     <span class="code">accuse @name</span> in
-    <a class="slack_link" href="https://mafiagame4.slack.com/messages/accusations">#accusations</a>
+    <a class="slack_link" href="https://mafiagame4.slack.com/messages/accusations">#accusations</a>.
 </div>
 </body>
 </html>
