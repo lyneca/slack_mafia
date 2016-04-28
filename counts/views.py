@@ -1,7 +1,7 @@
 import requests
 from django.shortcuts import render
 
-api_key = 'xoxp-34556136643-34610936081-34598874262-0406726de8'
+api_key = 'xoxp-34556136643-34610936081-38545595093-8094ca76bf'
 
 search_channels = ['city_hall', 'watercooler']
 
