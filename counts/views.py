@@ -1,7 +1,7 @@
 import requests
 from django.shortcuts import render
 
-api_key = 'xoxp-34556136643-34610936081-38545595093-8094ca76bf'
+api_key = os.environ['slack_api_key']
 
 search_channels = ['city_hall', 'watercooler']
 
