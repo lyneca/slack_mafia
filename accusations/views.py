@@ -1,10 +1,11 @@
 import re
+import os
 from datetime import datetime
 
 import requests
 from django.shortcuts import render
 
-api_key = 'xoxp-34556136643-34610936081-38545595093-8094ca76bf'
+api_key = os.environ['slack_api_key']
 
 
 class User:
