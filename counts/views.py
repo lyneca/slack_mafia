@@ -1,5 +1,6 @@
 import requests
 from django.shortcuts import render
+import os
 
 api_key = os.environ['slack_api_key']
 
