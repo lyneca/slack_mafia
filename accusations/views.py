@@ -33,7 +33,7 @@ def get_accusation_list():
         'search.messages',
         query='in:accusations after:yesterday',
         sort_dir='asc',
-        count='100'
+        count='999'
     )['messages']['matches']
     for message in messages:
         if re.match(r'a(ccuse|bsolve): <@\w+>', message['text'].lower()) and len(message['text'].split()) >= 2:
