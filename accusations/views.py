@@ -72,7 +72,10 @@ def get_accusation_totals():
                 accusation_totals[target] = [name]
         elif action == 'absolve':
             if target in accusation_totals:
-                accusation_totals[target].remove(name)
+                try:
+                    accusation_totals[target].remove(name)
+                except:
+                    print(accusation)
     t = {}
     for a in accusation_totals:
         if not len(accusation_totals[a]) == 0:
